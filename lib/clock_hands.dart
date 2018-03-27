@@ -1,87 +1,112 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:clock/hand_hour.dart';
+import 'package:clock/hand_minute.dart';
+import 'package:clock/hand_second.dart';
 import 'package:flutter/material.dart';
 
 
-class ClockHands extends StatefulWidget {
+//class ClockHands extends StatefulWidget {
+//  ClockHands();
+//
+//  @override
+//  _ClockHandsState createState() => new _ClockHandsState();
+//}
+//
+//class _ClockHandsState extends State<ClockHands> {
+//  DateTime _dateTime;
+//  Timer _timer;
+//
+//
+//
+//
+//  @override
+//  void initState() {
+//    super.initState();
+//    _dateTime=new DateTime.now();
+//    _timer= new Timer.periodic(const Duration(seconds: 1), setTime);
+//  }
+//
+//  void setTime(Timer timer){
+//    setState((){
+//      _dateTime= new DateTime.now();
+//    });
+//  }
+//
+//  @override
+//  void dispose() {
+//    _timer.cancel();
+//    super.dispose();
+//  }
+//
+//
+//  @override
+//  Widget build(BuildContext context) {
+//    return new Stack(
+//      children: <Widget>[
+//        //hour hand
+//        new Container(
+//          width: double.INFINITY,
+//          height: double.INFINITY,
+//          padding: const EdgeInsets.all(20.0),
+//          child:new CustomPaint(
+//            painter: new HourHandPainter(
+//                hours: _dateTime.hour,
+//                minutes: _dateTime.minute
+//            ),
+//          ),
+//        ),
+//
+//        //minute hand
+//        new Container(
+//          width: double.INFINITY,
+//          height: double.INFINITY,
+//          padding: const EdgeInsets.all(20.0),
+//          child:new CustomPaint(
+//            painter: new MinuteHandPainter(
+//              minutes: _dateTime.minute,
+//              seconds: _dateTime.second,
+//            ),
+//          ),
+//        ),
+//
+//        //second hand
+//        new Container(
+//          width: double.INFINITY,
+//          height: double.INFINITY,
+//          padding: const EdgeInsets.all(20.0),
+//          child:new CustomPaint(
+//            painter: new SecondHandPainter(seconds: _dateTime.second),
+//          ),
+//        ),
+//
+//      ],
+//    );
+//  }
+//}
+
+
+
+
+class ClockHands extends StatelessWidget {
+  static DateTime dateTime= new DateTime.now();
   ClockHands();
-
-  @override
-  _ClockHandsState createState() => new _ClockHandsState();
-}
-
-class _ClockHandsState extends State<ClockHands> {
-  DateTime _dateTime;
-  Timer _timer;
-
-
-
-
-  @override
-  void initState() {
-    super.initState();
-    _dateTime=new DateTime.now();
-    _timer= new Timer.periodic(const Duration(seconds: 1), setTime);
-  }
-
-  void setTime(Timer timer){
-    setState((){
-      _dateTime= new DateTime.now();
-    });
-  }
-
-  @override
-  void dispose() {
-    _timer.cancel();
-    super.dispose();
-  }
-
 
   @override
   Widget build(BuildContext context) {
     return new Stack(
-      children: <Widget>[
-        //hour hand
-        new Container(
-          width: double.INFINITY,
-          height: double.INFINITY,
-          padding: const EdgeInsets.all(20.0),
-          child:new CustomPaint(
-            painter: new HourHandPainter(
-                hours: _dateTime.hour,
-                minutes: _dateTime.minute
-            ),
-          ),
-        ),
+        children: <Widget>[
+          new HourHand(hour: dateTime.hour, minute: dateTime.minute),
 
-        //minute hand
-        new Container(
-          width: double.INFINITY,
-          height: double.INFINITY,
-          padding: const EdgeInsets.all(20.0),
-          child:new CustomPaint(
-            painter: new MinuteHandPainter(
-              minutes: _dateTime.minute,
-              seconds: _dateTime.second,
-            ),
-          ),
-        ),
+          new MinuteHand(minute: dateTime.minute,second: dateTime.second),
 
-        //second hand
-        new Container(
-          width: double.INFINITY,
-          height: double.INFINITY,
-          padding: const EdgeInsets.all(20.0),
-          child:new CustomPaint(
-            painter: new SecondHandPainter(seconds: _dateTime.second),
-          ),
-        ),
-
-      ],
+          new SecondHand(second: dateTime.second),
+        ]
     );
   }
 }
+
 
 
 class SecondHandPainter extends CustomPainter{
