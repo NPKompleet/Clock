@@ -15,12 +15,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
 
-      home: new Watch(),
+      home: new Clock(),
     );
   }
 }
 
-class Watch extends StatelessWidget{
+class Clock extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {

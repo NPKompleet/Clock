@@ -21,13 +21,12 @@ class _HourHandState extends State<HourHand> {
   @override
   void initState() {
     super.initState();
-    //ClockHand.dateTime= new DateTime.now();
+
     _timer= new Timer.periodic(const Duration(minutes: 6), setHour);
   }
 
   void setHour(Timer timer){
     setState((){
-      //_dateTime= new DateTime.now();
     });
   }
 
