@@ -5,8 +5,11 @@ import 'package:flutter/material.dart';
 class ClockDialPainter extends CustomPainter{
   final clockText;
 
-  final hourTickMark= 10.0;
-  final minuteTickMark = 5.0;
+  final hourTickMarkLength= 10.0;
+  final minuteTickMarkLength = 5.0;
+
+  final hourTickMarkWidth= 3.0;
+  final minuteTickMarkWidth = 1.5;
 
   final Paint tickPaint;
   final TextPainter textPainter;
@@ -31,6 +34,7 @@ class ClockDialPainter extends CustomPainter{
 
   @override
   void paint(Canvas canvas, Size size) {
+    var tickMarkLength;
     final angle= 2* PI / 60;
     final radius= size.width/2;
     canvas.save();
@@ -38,9 +42,10 @@ class ClockDialPainter extends CustomPainter{
     // drawing
     canvas.translate(radius, radius);
     for (var i = 0; i< 60; i++ ) {
+
       //make the length and stroke of the tick marker longer and thicker depending
-      final tickMarkLength = i % 5 == 0 ? hourTickMark: minuteTickMark;
-      tickPaint.strokeWidth= i % 5 == 0 ? 3.0 : 1.5;
+      tickMarkLength = i % 5 == 0 ? hourTickMarkLength: minuteTickMarkLength;
+      tickPaint.strokeWidth= i % 5 == 0 ? hourTickMarkWidth : minuteTickMarkWidth;
       canvas.drawLine(
           new Offset(0.0, -radius), new Offset(0.0, -radius+tickMarkLength), tickPaint);
 
@@ -52,8 +57,8 @@ class ClockDialPainter extends CustomPainter{
 
         textPainter.text= new TextSpan(
           text: this.clockText==ClockText.roman?
-          '${romanNumeralList[(i/5).floor()]}'
-              :'${(i/5).floor() == 0 ? 12 : (i/5).floor()}'
+          '${romanNumeralList[i~/5]}'
+              :'${i == 0 ? 12 : i~/5}'
           ,
           style: textStyle,
         );

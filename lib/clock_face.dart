@@ -24,7 +24,7 @@ class ClockFace extends StatelessWidget{
                 height: double.INFINITY,
                 padding: const EdgeInsets.all(10.0),
                 child:new CustomPaint(
-                  painter: new ClockDialPainter(),
+                  painter: new ClockDialPainter(clockText: ClockText.arabic),
                 ),
               ),
 

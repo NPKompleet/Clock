@@ -76,7 +76,6 @@ class BellsAndLegsPainter extends CustomPainter{
 
     canvas.drawPath(path, legPaint);
 
-
     //draw right bell and left leg
     canvas.rotate(2*PI/12);
     drawBellAndLeg(radius, canvas);

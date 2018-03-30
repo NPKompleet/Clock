@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter Clock',
       theme: new ThemeData(
 
         primarySwatch: Colors.blue,
@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 
 class Clock extends StatelessWidget{
 
