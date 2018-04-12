@@ -1,59 +1,6 @@
-import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:clock/clock_hands.dart';
-
-
-class HourHand extends StatefulWidget {
-  final int hour;
-  final int minute;
-
-  HourHand({this.hour, this.minute});
-
-  @override
-  _HourHandState createState() => new _HourHandState();
-}
-
-class _HourHandState extends State<HourHand> {
-  Timer _timer;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _timer= new Timer.periodic(const Duration(minutes: 6), setHour);
-  }
-
-  void setHour(Timer timer){
-    setState((){
-    });
-  }
-
-  @override
-  void dispose() {
-    _timer.cancel();
-    super.dispose();
-  }
-
-
-  @override
-  Widget build(BuildContext context) {
-    return new Container(
-      width: double.INFINITY,
-      height: double.INFINITY,
-      padding: const EdgeInsets.all(20.0),
-      child:new CustomPaint(
-        painter: new HourHandPainter(
-            hours: ClockHands.dateTime.hour,
-            minutes: ClockHands.dateTime.minute
-        ),
-      ),
-    );
-  }
-}
-
-
 
 
 class HourHandPainter extends CustomPainter{
