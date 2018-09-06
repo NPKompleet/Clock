@@ -4,11 +4,12 @@ import 'package:flutter/material.dart';
 
 
 class HourHandPainter extends CustomPainter{
+  final bool showHeartShape;
   final Paint hourHandPaint;
   int hours;
   int minutes;
 
-  HourHandPainter({this.hours, this.minutes}):hourHandPaint= new Paint(){
+  HourHandPainter({this.hours, this.minutes, this.showHeartShape = false}):hourHandPaint= new Paint(){
     hourHandPaint.color= Colors.black87;
     hourHandPaint.style= PaintingStyle.fill;
   }
@@ -30,15 +31,18 @@ class HourHandPainter extends CustomPainter{
 
     Path path= new Path();
 
-    //heart shape head for the hour hand
-    path.moveTo(0.0, -radius+15.0);
-    path.quadraticBezierTo(-3.5, -radius + 25.0, -15.0, -radius+radius/4);
-    path.quadraticBezierTo(-20.0, -radius+radius/3, -7.5, -radius+radius/3);
-    path.lineTo(0.0, -radius+radius/4);
-    path.lineTo(7.5, -radius+radius/3);
-    path.quadraticBezierTo(20.0, -radius+radius/3, 15.0, -radius+radius/4);
-    path.quadraticBezierTo(3.5, -radius + 25.0, 0.0, -radius+15.0);
-
+    if (showHeartShape) {
+      //heart shape head for the hour hand
+      path.moveTo(0.0, -radius + 15.0);
+      path.quadraticBezierTo(-3.5, -radius + 25.0, -15.0, -radius + radius / 4);
+      path.quadraticBezierTo(
+          -20.0, -radius + radius / 3, -7.5, -radius + radius / 3);
+      path.lineTo(0.0, -radius + radius / 4);
+      path.lineTo(7.5, -radius + radius / 3);
+      path.quadraticBezierTo(
+          20.0, -radius + radius / 3, 15.0, -radius + radius / 4);
+      path.quadraticBezierTo(3.5, -radius + 25.0, 0.0, -radius + 15.0);
+    }
 
     //hour hand stem
     path.moveTo(-1.0, -radius+radius/4);

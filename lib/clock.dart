@@ -1,60 +1,82 @@
 import 'dart:math';
 
+import 'package:clock/clock_text.dart';
 import 'package:flutter/material.dart';
 import 'package:clock/clock_face.dart';
 
-class ClockBody extends StatelessWidget{
+class Clock extends StatelessWidget {
 
-  ClockBody();
+  final Color circleColor;
+  final bool showBellsAndLegs;
+  final Color bellColor;
+  final Color legColor;
+  final ClockText clockText;
+  final bool showHourHandleHeartShape;
+
+  Clock({this.circleColor = Colors.black,
+         this.showBellsAndLegs = true,
+         this.bellColor = const Color(0xFF333333),
+         this.legColor = const Color(0xFF555555),
+         this.clockText = ClockText.arabic,
+         this.showHourHandleHeartShape = false
+  });
 
   @override
   Widget build(BuildContext context) {
     return new AspectRatio(
         aspectRatio: 1.0,
-        child: new Stack(
+        child: (showBellsAndLegs)? new Stack(
             children: <Widget>[
               new Container(
                 width: double.infinity,
                 child: new CustomPaint(
-                  painter: new BellsAndLegsPainter(),
+                  painter: new BellsAndLegsPainter(bellColor: bellColor, legColor: legColor),
                 ),
               ),
 
-
-              new Container(
-                width: double.infinity,
-                decoration: new BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.black,
-                  boxShadow: [
-                    new BoxShadow(
-                      offset: new Offset(0.0, 5.0),
-                      blurRadius: 5.0,
-                    )
-                  ],
-                ),
-
-                child: new ClockFace(),
-
-              )
+              buildClockCircle(context)
             ]
-        )
+        ) : buildClockCircle(context),
 
     );
+  }
+
+  Container buildClockCircle(BuildContext context) {
+    return new Container(
+              width: double.infinity,
+              decoration: new BoxDecoration(
+                shape: BoxShape.circle,
+                color: circleColor,
+                boxShadow: [
+                  new BoxShadow(
+                    offset: new Offset(0.0, 5.0),
+                    blurRadius: 5.0,
+                  )
+                ],
+              ),
+
+              child: new ClockFace(
+                  clockText : clockText,
+                  showHourHandleHeartShape: showHourHandleHeartShape
+              ),
+
+            );
   }
 }
 
 class BellsAndLegsPainter extends CustomPainter{
+  final Color bellColor;
+  final Color legColor;
   final Paint bellPaint;
   final Paint legPaint;
 
-  BellsAndLegsPainter():
-        bellPaint= new Paint(),
-        legPaint= new Paint(){
-    bellPaint.color= const Color(0xFF333333);
-    bellPaint.style= PaintingStyle.fill;
+  BellsAndLegsPainter({this.bellColor = const Color(0xFF333333), this.legColor = const Color(0xFF555555)}):
+      bellPaint= new Paint(),
+      legPaint= new Paint() {
+      bellPaint.color= bellColor;
+      bellPaint.style= PaintingStyle.fill;
 
-    legPaint.color= const Color(0xFF555555);
+    legPaint.color= legColor;
     legPaint.style= PaintingStyle.stroke;
     legPaint.strokeWidth= 10.0;
     legPaint.strokeCap= StrokeCap.round;
@@ -112,4 +134,3 @@ class BellsAndLegsPainter extends CustomPainter{
     return false;
   }
 }
-

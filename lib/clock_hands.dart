@@ -8,6 +8,10 @@ import 'package:flutter/material.dart';
 
 
 class ClockHands extends StatefulWidget {
+  final bool showHourHandleHeartShape;
+
+  ClockHands({this.showHourHandleHeartShape = false});
+
   @override
   _ClockHandState createState() => new _ClockHandState();
 }
@@ -15,6 +19,8 @@ class ClockHands extends StatefulWidget {
 class _ClockHandState extends State<ClockHands> {
   Timer _timer;
   DateTime dateTime;
+
+  _ClockHandState();
 
   @override
   void initState() {
@@ -46,7 +52,7 @@ class _ClockHandState extends State<ClockHands> {
             fit: StackFit.expand,
               children: <Widget>[
                   new CustomPaint( painter: new HourHandPainter(
-                    hours: dateTime.hour, minutes: dateTime.minute),
+                    hours: dateTime.hour, minutes: dateTime.minute, showHeartShape: widget.showHourHandleHeartShape),
                   ),
                   new CustomPaint(painter: new MinuteHandPainter(
                     minutes: dateTime.minute, seconds: dateTime.second),

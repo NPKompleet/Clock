@@ -1,8 +1,15 @@
+import 'package:clock/clock_text.dart';
 import 'package:flutter/material.dart';
 import 'package:clock/clock_dial_painter.dart';
 import 'package:clock/clock_hands.dart';
 
 class ClockFace extends StatelessWidget{
+
+  final ClockText clockText;
+  final bool showHourHandleHeartShape;
+
+  ClockFace({this.clockText = ClockText.arabic, this.showHourHandleHeartShape = false});
+
   @override
   Widget build(BuildContext context) {
     return new Padding(
@@ -24,7 +31,7 @@ class ClockFace extends StatelessWidget{
                 height: double.infinity,
                 padding: const EdgeInsets.all(10.0),
                 child:new CustomPaint(
-                  painter: new ClockDialPainter(clockText: ClockText.arabic),
+                  painter: new ClockDialPainter(clockText: clockText),
                 ),
               ),
 
@@ -42,7 +49,7 @@ class ClockFace extends StatelessWidget{
               ),
 
 
-              new ClockHands(),
+              new ClockHands(showHourHandleHeartShape: showHourHandleHeartShape),
 
             ],
           ),
