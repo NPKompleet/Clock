@@ -33,15 +33,15 @@ class HourHandPainter extends CustomPainter{
 
     if (showHeartShape) {
       //heart shape head for the hour hand
-      path.moveTo(0.0, -radius + 15.0);
-      path.quadraticBezierTo(-3.5, -radius + 25.0, -15.0, -radius + radius / 4);
+      path.moveTo(0.0, -radius + radius*15.0/137.5);
+      path.quadraticBezierTo(radius*(-3.5)/137.5, -radius + radius*25.0/137.5, radius*(-15.0)/137.5, -radius + radius / 4);
       path.quadraticBezierTo(
-          -20.0, -radius + radius / 3, -7.5, -radius + radius / 3);
+          radius*(-20.0)/137.5, -radius + radius / 3, radius*(-7.5)/137.5, -radius + radius / 3);
       path.lineTo(0.0, -radius + radius / 4);
       path.lineTo(7.5, -radius + radius / 3);
       path.quadraticBezierTo(
-          20.0, -radius + radius / 3, 15.0, -radius + radius / 4);
-      path.quadraticBezierTo(3.5, -radius + 25.0, 0.0, -radius + 15.0);
+          radius*(20.0)/137.5, -radius + radius / 3, radius*(15.0)/137.5, -radius + radius / 4);
+      path.quadraticBezierTo(radius*(3.5)/137.5, -radius + radius*(25.0)/137.5, 0.0, -radius + radius*15.0/137.5);
     }
 
     //hour hand stem
