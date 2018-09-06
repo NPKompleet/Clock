@@ -40,7 +40,7 @@ class _ClockHandState extends State<ClockHands> {
     return new AspectRatio(
         aspectRatio: 1.0,
         child: new Container(
-          width: double.INFINITY,
+          width: double.infinity,
           padding: const EdgeInsets.all(20.0),
           child: new Stack(
             fit: StackFit.expand,

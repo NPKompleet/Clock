@@ -35,7 +35,7 @@ class ClockDialPainter extends CustomPainter{
   @override
   void paint(Canvas canvas, Size size) {
     var tickMarkLength;
-    final angle= 2* PI / 60;
+    final angle= 2* pi / 60;
     final radius= size.width/2;
     canvas.save();
 

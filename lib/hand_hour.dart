@@ -23,8 +23,8 @@ class HourHandPainter extends CustomPainter{
 
     //checks if hour is greater than 12 before calculating rotation
     canvas.rotate(this.hours>=12?
-    2*PI*((this.hours-12)/12 + (this.minutes/720)):
-    2*PI*((this.hours/12)+ (this.minutes/720))
+    2*pi*((this.hours-12)/12 + (this.minutes/720)):
+    2*pi*((this.hours/12)+ (this.minutes/720))
     );
 
 

@@ -14,7 +14,7 @@ class ClockBody extends StatelessWidget{
         child: new Stack(
             children: <Widget>[
               new Container(
-                width: double.INFINITY,
+                width: double.infinity,
                 child: new CustomPaint(
                   painter: new BellsAndLegsPainter(),
                 ),
@@ -22,7 +22,7 @@ class ClockBody extends StatelessWidget{
 
 
               new Container(
-                width: double.INFINITY,
+                width: double.infinity,
                 decoration: new BoxDecoration(
                   shape: BoxShape.circle,
                   color: Colors.black,
@@ -77,11 +77,11 @@ class BellsAndLegsPainter extends CustomPainter{
     canvas.drawPath(path, legPaint);
 
     //draw right bell and left leg
-    canvas.rotate(2*PI/12);
+    canvas.rotate(2*pi/12);
     drawBellAndLeg(radius, canvas);
 
     //draw left bell and right leg
-    canvas.rotate(-4*PI/12);
+    canvas.rotate(-4*pi/12);
     drawBellAndLeg(radius, canvas);
 
     canvas.restore();

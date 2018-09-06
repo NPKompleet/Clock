@@ -10,7 +10,7 @@ class ClockFace extends StatelessWidget{
       child: new AspectRatio(
         aspectRatio: 1.0,
         child: new Container(
-          width: double.INFINITY,
+          width: double.infinity,
           decoration: new BoxDecoration(
             shape: BoxShape.circle,
             color: Colors.white,
@@ -20,8 +20,8 @@ class ClockFace extends StatelessWidget{
             children: <Widget>[
               //dial and numbers
               new Container(
-                width: double.INFINITY,
-                height: double.INFINITY,
+                width: double.infinity,
+                height: double.infinity,
                 padding: const EdgeInsets.all(10.0),
                 child:new CustomPaint(
                   painter: new ClockDialPainter(clockText: ClockText.arabic),
