@@ -34,11 +34,11 @@ class AppClock extends StatelessWidget{
           children: <Widget>[
 
             new Clock(
-                circleColor: Colors.blue,
-                showBellsAndLegs: true,
+                circleColor: Colors.black,
+                showBellsAndLegs: false,
                 bellColor: Colors.green,
-                clockText: ClockText.roman,
-                showHourHandleHeartShape: true,
+                clockText: ClockText.arabic,
+                showHourHandleHeartShape: false,
             ),
           ],
         ),

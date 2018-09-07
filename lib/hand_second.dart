@@ -29,7 +29,6 @@ class SecondHandPainter extends CustomPainter{
 
     canvas.translate(radius, radius);
 
-
     canvas.rotate(2*pi*this.seconds/60);
 
     Path path1= new Path();
@@ -40,12 +39,10 @@ class SecondHandPainter extends CustomPainter{
     path2.addOval(new Rect.fromCircle(radius: 7.0, center: new Offset(0.0, -radius)));
     path2.addOval(new Rect.fromCircle(radius: 5.0, center: new Offset(0.0, 0.0)));
 
-
-
-
     canvas.drawPath(path1, secondHandPaint);
     canvas.drawPath(path2, secondHandPointsPaint);
 
+//    canvas.drawShadow(path2, Colors.black, 4.0, false);
 
     canvas.restore();
   }

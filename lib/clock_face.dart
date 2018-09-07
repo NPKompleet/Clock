@@ -5,10 +5,11 @@ import 'package:clock/clock_hands.dart';
 
 class ClockFace extends StatelessWidget{
 
+  final DateTime dateTime;
   final ClockText clockText;
   final bool showHourHandleHeartShape;
 
-  ClockFace({this.clockText = ClockText.arabic, this.showHourHandleHeartShape = false});
+  ClockFace({this.clockText = ClockText.arabic, this.showHourHandleHeartShape = false, this.dateTime});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +50,7 @@ class ClockFace extends StatelessWidget{
               ),
 
 
-              new ClockHands(showHourHandleHeartShape: showHourHandleHeartShape),
+              new ClockHands(dateTime:dateTime, showHourHandleHeartShape: showHourHandleHeartShape),
 
             ],
           ),
