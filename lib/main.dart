@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:clock/clock_body.dart';
+import 'package:clock/clock.dart';
+import 'package:clock/clock_text.dart';
 
 
 void main() => runApp(new MyApp());
@@ -15,25 +16,30 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
 
-      home: new Clock(),
+      home: new AppClock(),
     );
   }
 }
 
 
-class Clock extends StatelessWidget{
+class AppClock extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       body: new Padding(
-        padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
 
-            new ClockBody(),
-
+            new Clock(
+                circleColor: Colors.black,
+                showBellsAndLegs: false,
+                bellColor: Colors.green,
+                clockText: ClockText.arabic,
+                showHourHandleHeartShape: false,
+            ),
           ],
         ),
       ),

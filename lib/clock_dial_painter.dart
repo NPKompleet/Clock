@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:clock/clock_text.dart';
 import 'package:flutter/material.dart';
 
 class ClockDialPainter extends CustomPainter{
@@ -17,7 +18,7 @@ class ClockDialPainter extends CustomPainter{
 
   final romanNumeralList= [ 'XII','I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI'];
 
-  ClockDialPainter({this.clockText= ClockText.roman})
+  ClockDialPainter({this.clockText = ClockText.roman})
       :tickPaint= new Paint(),
         textPainter= new TextPainter(
           textAlign: TextAlign.center,
@@ -35,7 +36,7 @@ class ClockDialPainter extends CustomPainter{
   @override
   void paint(Canvas canvas, Size size) {
     var tickMarkLength;
-    final angle= 2* PI / 60;
+    final angle= 2* pi / 60;
     final radius= size.width/2;
     canvas.save();
 
@@ -88,7 +89,3 @@ class ClockDialPainter extends CustomPainter{
   }
 }
 
-enum ClockText{
-  roman,
-  arabic
-}

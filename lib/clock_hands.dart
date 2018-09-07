@@ -7,57 +7,64 @@ import 'package:flutter/material.dart';
 
 
 
-class ClockHands extends StatefulWidget {
-  @override
-  _ClockHandState createState() => new _ClockHandState();
-}
+class ClockHands extends StatelessWidget {
+  final DateTime dateTime;
+  final bool showHourHandleHeartShape;
 
-class _ClockHandState extends State<ClockHands> {
-  Timer _timer;
-  DateTime dateTime;
-
-  @override
-  void initState() {
-    super.initState();
-    dateTime = new DateTime.now();
-    _timer = new Timer.periodic(const Duration(seconds: 1), setTime);
-  }
-
-  void setTime(Timer timer) {
-    setState(() {
-      dateTime = new DateTime.now();
-    });
-  }
-
-  @override
-  void dispose() {
-    _timer.cancel();
-    super.dispose();
-  }
+  ClockHands({this.dateTime, this.showHourHandleHeartShape = false});
 
   @override
   Widget build(BuildContext context) {
     return new AspectRatio(
         aspectRatio: 1.0,
         child: new Container(
-          width: double.INFINITY,
-          padding: const EdgeInsets.all(20.0),
-          child: new Stack(
-            fit: StackFit.expand,
-              children: <Widget>[
+            width: double.infinity,
+            padding: const EdgeInsets.all(20.0),
+            child: new Stack(
+                fit: StackFit.expand,
+                children: <Widget>[
                   new CustomPaint( painter: new HourHandPainter(
-                    hours: dateTime.hour, minutes: dateTime.minute),
+                      hours: dateTime.hour, minutes: dateTime.minute, showHeartShape: showHourHandleHeartShape),
                   ),
                   new CustomPaint(painter: new MinuteHandPainter(
-                    minutes: dateTime.minute, seconds: dateTime.second),
+                      minutes: dateTime.minute, seconds: dateTime.second),
                   ),
                   new CustomPaint(painter: new SecondHandPainter(seconds: dateTime.second),
                   ),
                 ]
-              )
+            )
         )
 
     );
   }
 }
+
+//class _ClockHandState extends State<ClockHands> {
+  Timer _timer;
+//
+//  _ClockHandState();
+//
+//  @override
+//  void initState() {
+//    super.initState();
+//    dateTime = new DateTime.now();
+//    _timer = new Timer.periodic(const Duration(seconds: 1), setTime);
+//  }
+//
+//  void setTime(Timer timer) {
+//    setState(() {
+//      dateTime = new DateTime.now();
+//    });
+//  }
+//
+//  @override
+//  void dispose() {
+//    _timer.cancel();
+//    super.dispose();
+//  }
+//
+//  @override
+//  Widget build(BuildContext context) {
+//  }
+//}
 
